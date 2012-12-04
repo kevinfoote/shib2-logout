@@ -1,0 +1,100 @@
+Logout servlet for Shibboleth2 Identity Provider 
+=======
+
+Logout servlet for Shibboleth, allows for logout from the Identity Provider
+and shows a list of Service Providers which have been used during the session.
+
+
+Install (simple)
+=======
+
+1) Obtain shib2-logout.jar from 
+   
+   https://github.com/kevinfoote/SOMEADDRESSHERE
+
+2) Place jar file in the lib subdirectory of your Shibboleth IdP setup directory.
+3) Copy the example logout.jsp and logout-done.jsp files into your webapp folder 
+   (please note that these examples may be customized by you as you like).
+4) In your webapp/WEB-INF/web.xml , add the following lines:
+
+    <!-- Servlet for performing IdP logout. -->
+    <servlet>
+        <servlet-name>Shib2Logout</servlet-name>
+        <servlet-class>org.extreme.shib2.logout.LogoutServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Shib2Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+5) Reinstall your Shibboleth IdP by following the normal install method for your 
+   platform.
+6) Restart your application server. 
+
+
+Install (normal)
+=======
+The normal installation assumes you have a suitable maven build environment for the 
+Shibboleth Identity Provider stack of software. (If this is not the case use the 
+method above.)
+
+1) Pull the code repository.
+2) Compile the source and create the jar file (shib2-logout-X.X.jar) from it.
+   (This may require additional jars from your Shibboleth IdP.)
+   
+   mvn -DskipTests install 
+
+2) Next copy the resulting target/shib2-logout-X.X.jar to the lib subdirectory 
+   of your Shibboleth IdP's setup directory.
+3) Copy the *.jsp templates from the resources directory to your webapp folder 
+   (please note that these examples may be customized by you as you like).
+4) In your webapp/WEB-INF/web.xml , add the following lines:
+
+    <!-- Servlet for performing IdP logout. -->
+    <servlet>
+        <servlet-name>Shib2Logout</servlet-name>
+        <servlet-class>org.extreme.shib2.logout.LogoutServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Shib2Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+5) Reinstall your Shibboleth IdP by calling the appropriate install.sh file.
+6) Restart your application server. 
+
+
+Post Install
+=======
+You may now reach the logout page below your IdP's URL, e.g. 
+https://idp.example.com/idp/logout
+
+Additionally you can now direct services that have logout capabilities to 
+the address above to complete the IdP session destruction logout that this
+servlet provides.
+
+
+Options
+=======
+Optionally you can change the names of the jsp pages used by setting these 
+init parameters in web.xml when you define the logout servlet.
+
+        <init-param>
+          <param-name>logoutPage</param-name>
+          <param-value>yourpage.jsp</param-value>
+        </init-param>
+        <init-param>
+          <param-name>logoutDonePage</param-name>
+          <param-value>yourotherpage.jsp</param-value>
+        </init-param>
+
+Credits
+=======
+- Original UniMr Logout servlet for Shibboleth IdP 2 
+   Manuel Haim <haim@hrz.uni-marburg.de> 
+   http://
+- Repackage to maven project (KevinFoote)
