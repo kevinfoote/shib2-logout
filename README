@@ -8,9 +8,9 @@ and shows a list of Service Providers which have been used during the session.
 Install (simple)
 =======
 
-1) Obtain shib2-logout.jar from 
+1) Obtain and unzip shib2-logout-0.1.zip from 
    
-   https://github.com/kevinfoote/SOMEADDRESSHERE
+   https://github.com/kevinfoote/shib2-logout/downloads/shib2-logout-0.1.zip
 
 2) Place jar file in the lib subdirectory of your Shibboleth IdP setup directory.
 3) Copy the example logout.jsp and logout-done.jsp files into your webapp folder 
@@ -96,5 +96,5 @@ Credits
 =======
 - Original UniMr Logout servlet for Shibboleth IdP 2 
    Manuel Haim <haim@hrz.uni-marburg.de> 
-   http://
-- Repackage to maven project (KevinFoote)
+   http://www.staff.uni-marburg.de/~haimm/unimr-logout.shib2.2012_04_27.zip
+- Repackage to maven project (kevinfoote)
