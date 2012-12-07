@@ -59,10 +59,17 @@ public class LogoutServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
+        if (getInitParameter(logoutPageInitParam) != null) {
+            logoutPage = getInitParameter(logoutPageInitParam);
+            log.debug("Setting logoutPage from init-parameter.");
+        }
+        if (getInitParameter(logoutDonePageInitParam) != null) {
+            logoutDonePage = getInitParameter(logoutDonePageInitParam);
+            log.debug("Setting logoutDonePage from init-parameter.");
+        }
+
         context = config.getServletContext();
-        //handlerManager = HttpServletHelper.getProfileHandlerManager(context);
         sessionManager = HttpServletHelper.getSessionManager(context);
-        //storageService = (StorageService<String, LoginContextEntry>) HttpServletHelper.getStorageService(context);
     }
 	
     /** {@inheritDoc} */
@@ -84,10 +91,8 @@ public class LogoutServlet extends HttpServlet {
         response.addCookie(cookie);
 
         // destroy session
-		if(session!=null) sessionManager.destroySession(session.getSessionID());
-        
+        if(session!=null) sessionManager.destroySession(session.getSessionID());
         redirectToLogoutDonePage(request, response, null);
-
     }
 
     /**
