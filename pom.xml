@@ -4,7 +4,7 @@
 
   <groupId>org.extreme.shib2.logout</groupId>
   <artifactId>shib2-logout</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <packaging>jar</packaging>
 
   <name>shib2-logout</name>
