@@ -1,3 +1,18 @@
+**************************************************************************
+**************************************************************************
+
+NOTE: This in no way attempts to implements a SAML logout replacement. The
+      Shibboleth IdP version 2.4.0 is a much better fit for SAML Local 
+      logout. 
+
+https://wiki.shibboleth.net/confluence/display/SHIB2/IdPEnableSLO
+
+https://wiki.shibboleth.net/confluence/display/SHIB2/SLOIssues
+
+**************************************************************************
+**************************************************************************
+
+
 Logout servlet for Shibboleth2 Identity Provider 
 =======
 
@@ -8,9 +23,9 @@ and shows a list of Service Providers which have been used during the session.
 Install (simple)
 =======
 
-1) Obtain and unzip shib2-logout-0.1.zip from 
+1) Obtain and unzip shib2-logout-1.0-240.zip from 
    
-   https://github.com/kevinfoote/shib2-logout/downloads/shib2-logout-0.1.zip
+   https://github.com/kevinfoote/shib2-logout/downloads/shib2-logout-1.0-240.zip
 
 2) Place jar file in the lib subdirectory of your Shibboleth IdP setup directory.
 3) Copy the example logout.jsp and logout-done.jsp files into your webapp folder 
@@ -78,7 +93,7 @@ the address above to complete the IdP session destruction logout that this
 servlet provides.
 
 
-Options
+Additional Options
 =======
 Optionally you can change the names of the jsp pages used by setting these 
 init parameters in web.xml when you define the logout servlet.
@@ -91,6 +106,14 @@ init parameters in web.xml when you define the logout servlet.
           <param-name>logoutDonePage</param-name>
           <param-value>yourotherpage.jsp</param-value>
         </init-param>
+
+Logging can be set for this servlet using normal shibboleth logging entries
+to your logging.xml file 
+
+   <logger name="org.extreme.shib2.logout">
+        <level value="INFO" />
+   </logger>
+
 
 Credits
 =======
