@@ -76,8 +76,10 @@ public class LogoutServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
 
+        String principalName = "";
     	Session session = HttpServletHelper.getUserSession(request);
         String logout = request.getParameter(logoutAttribute);
+        principalName = session.getPrincipalName();
 
         if(logout == null || session == null) {
             redirectToLogoutPage(request, response, null);
@@ -91,7 +93,9 @@ public class LogoutServlet extends HttpServlet {
         response.addCookie(cookie);
 
         // destroy session
+        String sid = session.getSessionID();
         if(session!=null) sessionManager.destroySession(session.getSessionID());
+        log.info("Destroyed session {} for {}" , sid, principalName);
         redirectToLogoutDonePage(request, response, null);
     }
 
