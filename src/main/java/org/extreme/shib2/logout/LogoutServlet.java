@@ -43,10 +43,10 @@ public class LogoutServlet extends HttpServlet {
     private final String logoutDonePageInitParam = "logoutDonePage";
 
     /** Logout page name. */
-    private String logoutPage = "logout.jsp";
+    private String logoutPage = "xlogout.jsp";
 
     /** PostLogout page name. */
-    private String logoutDonePage = "logout-done.jsp";
+    private String logoutDonePage = "xlogout-done.jsp";
 
     private final String logoutAttribute = "j_logout";
 	

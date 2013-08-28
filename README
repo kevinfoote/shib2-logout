@@ -28,7 +28,7 @@ Install (simple)
    https://github.com/kevinfoote/shib2-logout/downloads/shib2-logout-1.0-240.zip
 
 2) Place jar file in the lib subdirectory of your Shibboleth IdP setup directory.
-3) Copy the example logout.jsp and logout-done.jsp files into your webapp folder 
+3) Copy the example xlogout.jsp and xlogout-done.jsp files into your webapp folder 
    (please note that these examples may be customized by you as you like).
 4) In your webapp/WEB-INF/web.xml , add the following lines:
 
