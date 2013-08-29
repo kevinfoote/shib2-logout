@@ -76,12 +76,17 @@ public class LogoutServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
 
+        log.debug("Begin shib2logout servlet");
         String principalName = "";
-    	Session session = HttpServletHelper.getUserSession(request);
-        String logout = request.getParameter(logoutAttribute);
-        principalName = session.getPrincipalName();
+        String logout = null;
+        Session session = HttpServletHelper.getUserSession(request);
 
-        if(logout == null || session == null) {
+        if (session != null) {
+            logout = request.getParameter(logoutAttribute);
+            principalName = session.getPrincipalName();
+        } 
+
+        if (logout == null || session == null) {
             redirectToLogoutPage(request, response, null);
             return;
         }
