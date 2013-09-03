@@ -11,18 +11,10 @@
 
 <html><head><title>Logout from authentication service</title></head><body>
 <%
-    Logger log = LoggerFactory.getLogger(HttpServletHelper.class);
+    Logger log = LoggerFactory.getLogger(HttpServletHelper.class); 
     Session userSession = HttpServletHelper.getUserSession(request);
-
-
 %>
 
-
-		<%
-		// <p>This login page is an example and should be customized.  Refer to the 
-		//	<a href="https://spaces.internet2.edu/display/SHIB2/IdPAuthUserPassLoginPage" target="_new"> documentation</a>.
-		// </p>
-		%>
 
 		<% if (userSession == null) { %>
 			<h1>Logout from authentication service</h1>
@@ -38,7 +30,6 @@
 			String currentPrincipal = "";
 			if (userSession!=null) {
 				currentPrincipal = userSession.getPrincipalName();
-				log.debug( "currentPrincipal=" +currentPrincipal);
 			}
 			
 			String currentUser = currentPrincipal;
@@ -69,10 +60,10 @@
 				<p>Your session has been destroyed.</p>
 			<% } %>
 
-			<p><strong>Bitte beachten Sie:</strong></p>
+			<p><strong>Please Note:</strong></p>
 			<ul>
-				<li><p>Um sich vollständig abzumelden, <strong>m&uuml;ssen Sie jetzt Ihren Webbrowser beenden.</strong></p></li>
-				<li><p>Sie k&ouml;nnen bereits jetzt keine neuen Web-Anwendungen mehr starten, ohne sich erneut anzumelden.</p></li>
+                                <li><p>To completely log out, you must now exit your Web browser.</p></li>
+                                <li><p>You may still be able to visit your previously accessed web applications without having to log in again.</p></li>
 			</ul>
 		<%}%>
 

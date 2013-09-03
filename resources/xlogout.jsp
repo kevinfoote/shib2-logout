@@ -7,14 +7,13 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ page import="org.extreme.shib2.logout.LogoutServlet" %>
 <%@ page import="edu.internet2.middleware.shibboleth.idp.session.ServiceInformation" %>
+<%@ page import="org.slf4j.Logger" %>
+<%@ page import="org.slf4j.LoggerFactory" %>
 
 <html><head><title>Logout from authentication service</title></head><body>
 <%
-    //LoginContext loginContext = HttpServletHelper.getLoginContext(HttpServletHelper.getStorageService(application),
-    //                                                              application, request);
+    Logger log = LoggerFactory.getLogger(HttpServletHelper.class); 
     Session userSession = HttpServletHelper.getUserSession(request);
-
-
 %>
 
 
