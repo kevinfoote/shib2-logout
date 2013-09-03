@@ -1,0 +1,2 @@
+60dc087b188cb4584f0aa201dc4296fc  shib2-logout-1.0-240.zip
+6134009b8d919c8e4b7bcebd007f6876  shib2-logout-1.1-240.zip
