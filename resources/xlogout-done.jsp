@@ -41,10 +41,9 @@
 				log.debug( "currentPrincipal=" +currentPrincipal);
 			}
 			
-
 			String currentUser = currentPrincipal;
 
-			<% if(!currentUser.equals("")) { %>
+			if(!currentUser.equals("")) { %>
 				<p>Your session as user &quot;<%=currentUser%>&quot;
 				has been destroyed.</p>
 				<p><strong>Caution:</strong> If you do not quit your web browser, you may remain
